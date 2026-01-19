@@ -10,7 +10,7 @@ from typing import Any, Optional
 # CONFIG
 # ===============================
 
-API_KEY = os.getenv("RUNPOD_API_KEY")
+API_KEY = os.getenv("URDU_API_KEY")
 ENDPOINT_ID = os.getenv("RUNPOD_ENDPOINT_ID")
 
 RUN_URL = f"https://api.runpod.ai/v2/{ENDPOINT_ID}/run"
