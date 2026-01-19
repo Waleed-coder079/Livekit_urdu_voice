@@ -1,0 +1,26 @@
+# LiveKit Agent Framework
+livekit==0.8.4
+livekit-agents==0.12.1
+livekit-plugins-silero==0.12.1
+
+# HTTP & Network
+requests==2.31.0
+httpx==0.25.2
+
+# Audio Processing
+torch==2.1.1
+torchaudio==2.1.1
+numpy==1.24.3
+
+# Speech Recognition & Processing
+openai-whisper==20231117
+transformers==4.35.2
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.0
+typing-extensions==4.8.0
+
+# Optional: For audio processing
+scipy==1.11.4
+
