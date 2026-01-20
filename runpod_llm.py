@@ -1,12 +1,13 @@
-from runpod_client import call_runpod
-from knowledge_base import format_kb_for_llm, get_kb_summary
+import time
+from unittest import result
+from click import prompt
+from runpod_client import llm_async
+from knowledge_base import format_kb_for_llm
 
 class RunPodLLM:
     async def generate(self, prompt: str) -> str:
-        # Add knowledge base context to the prompt
+        import time
         kb_context = format_kb_for_llm(prompt)
-        
-        # Enhance the prompt with KB information
         enhanced_prompt = f"""
 آپ ایک اردو ٹیلیفونی ایسسٹنٹ ہیں جو سی ایم پنجاب آسان کاروبار فنانس اسکیم کے بارے میں معلومات فراہم کرتے ہیں۔
 
@@ -16,6 +17,13 @@ class RunPodLLM:
 
 براہ کرم اردو میں واضح اور مفید جواب دیں۔
 """
-        
-        result = await call_runpod("llm", {"prompt": enhanced_prompt})
-        return result.get("response", "")
+        start = time.time()
+        result = await llm_async(enhanced_prompt)
+        end = time.time()
+    
+        response_text = result.get("response", "")
+        print(f"[LLM LOG] Prompt length={len(enhanced_prompt)} | "
+              f"Response length={len(response_text)} | "
+              f"Duration={end-start:.2f}s")
+        return response_text
+
